@@ -1,5 +1,10 @@
-public class Main{
-    public static void main(String[] args){
+import manager.TaskManager;
+import task.Task;
+import task.Epic;
+import manager.Status;
+
+public class Main {
+    public static void main(String[] args) {
         TaskManager manager = new TaskManager();
 
         Task task1 = new Task("Задача 1", "Описание задачи 1", Status.NEW);
@@ -10,8 +15,8 @@ public class Main{
         Epic epic1 = new Epic("Эпик 1", "Описание эпика 1", Status.NEW);
         manager.addEpic(epic1);
 
-        Subtask subtask1 = new Subtask("Подзадача 1", "Описание подзадачи 1", Status.NEW, epic1.getIdNumber());
-        Subtask subtask2 = new Subtask("Подзадача 2", "Описание подзадачи 2", Status.NEW, epic1.getIdNumber());
+        Epic.Subtask subtask1 = new Epic.Subtask("Подзадача 1", "Описание подзадачи 1", Status.NEW, epic1.getTaskId());
+        Epic.Subtask subtask2 = new Epic.Subtask("Подзадача 2", "Описание подзадачи 2", Status.NEW, epic1.getTaskId());
         manager.addSubtask(subtask1);
         manager.addSubtask(subtask2);
 
@@ -19,39 +24,39 @@ public class Main{
         Epic epic2 = new Epic("Эпик 2", "Описание эпика 2", Status.NEW);
         manager.addEpic(epic2);
 
-        Subtask subtask3 = new Subtask("Подзадача 3", "Описание подзадачи 3", Status.NEW, epic2.getIdNumber());
+        Epic.Subtask subtask3 = new Epic.Subtask("Подзадача 3", "Описание подзадачи 3", Status.NEW, epic2.getTaskId());
         manager.addSubtask(subtask3);
 
 
         System.out.println(manager.getAllTasks());
         System.out.println(manager.getAllEpics());
-        System.out.println(manager.getAllSubtasksByEpicId(epic1.getIdNumber()));
-        System.out.println(manager.getAllSubtasksByEpicId(epic2.getIdNumber()));
+        System.out.println(manager.getAllSubtasksByEpicId(epic1.getTaskId()));
+        System.out.println(manager.getAllSubtasksByEpicId(epic2.getTaskId()));
 
 
         subtask1.setStatus(Status.DONE);
-        manager.updateSubtaskById(subtask1.getIdNumber(), subtask1);
+        manager.updateSubtaskById(subtask1.getTaskId(), subtask1);
 
         subtask2.setStatus(Status.IN_PROGRESS);
-        manager.updateSubtaskById(subtask2.getIdNumber(), subtask2);
+        manager.updateSubtaskById(subtask2.getTaskId(), subtask2);
 
         subtask3.setStatus(Status.DONE);
-        manager.updateSubtaskById(subtask3.getIdNumber(), subtask3);
+        manager.updateSubtaskById(subtask3.getTaskId(), subtask3);
 
         task1.setStatus(Status.DONE);
-        manager.updateTaskById(task1.getIdNumber(), task1);
+        manager.updateTaskById(task1.getTaskId(), task1);
 
         task2.setStatus(Status.IN_PROGRESS);
-        manager.updateTaskById(task2.getIdNumber(), task2);
+        manager.updateTaskById(task2.getTaskId(), task2);
 
-        System.out.println("Task 1: " + manager.getTaskById(task1.getIdNumber()));
-        System.out.println("Task 2: " + manager.getTaskById(task2.getIdNumber()));
+        System.out.println("task.Task 1: " + manager.getTaskById(task1.getTaskId()));
+        System.out.println("task.Task 2: " + manager.getTaskById(task2.getTaskId()));
 
-        System.out.println("Epic 1: " + manager.getEpicById(epic1.getIdNumber()));
-        System.out.println("Epic 2: " + manager.getEpicById(epic2.getIdNumber()));
+        System.out.println("task.Epic 1: " + manager.getEpicById(epic1.getTaskId()));
+        System.out.println("task.Epic 2: " + manager.getEpicById(epic2.getTaskId()));
 
 
-        System.out.println(manager.removeEpicById(epic2.getIdNumber()));
+       manager.removeEpicById(epic2.getTaskId());
 
         System.out.println(manager.getAllTasks());
 
