@@ -1,7 +1,5 @@
 package task;
 
-import manager.Status;
-
 import java.util.Objects;
 
 public class Task {
@@ -54,7 +52,7 @@ public class Task {
         if (obj == null) return false;
         if (this.getClass() != obj.getClass()) return false;
         Task otherTask = (Task) obj;
-        return ( taskId== otherTask.taskId);
+        return taskId == otherTask.taskId;
     }
 
     @Override

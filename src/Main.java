@@ -1,7 +1,8 @@
 import manager.TaskManager;
 import task.Task;
 import task.Epic;
-import manager.Status;
+import task.Status;
+import task.Subtask;
 
 public class Main {
     public static void main(String[] args) {
@@ -12,19 +13,19 @@ public class Main {
         manager.addTask(task1);
         manager.addTask(task2);
 
-        Epic epic1 = new Epic("Эпик 1", "Описание эпика 1", Status.NEW);
+        Epic epic1 = new Epic("Эпик 1", "Описание эпика 1");
         manager.addEpic(epic1);
 
-        Epic.Subtask subtask1 = new Epic.Subtask("Подзадача 1", "Описание подзадачи 1", Status.NEW, epic1.getTaskId());
-        Epic.Subtask subtask2 = new Epic.Subtask("Подзадача 2", "Описание подзадачи 2", Status.NEW, epic1.getTaskId());
+        Subtask subtask1 = new Subtask("Подзадача 1", "Описание подзадачи 1", Status.NEW, epic1.getTaskId());
+        Subtask subtask2 = new Subtask("Подзадача 2", "Описание подзадачи 2", Status.NEW, epic1.getTaskId());
         manager.addSubtask(subtask1);
         manager.addSubtask(subtask2);
 
 
-        Epic epic2 = new Epic("Эпик 2", "Описание эпика 2", Status.NEW);
+        Epic epic2 = new Epic("Эпик 2", "Описание эпика 2");
         manager.addEpic(epic2);
 
-        Epic.Subtask subtask3 = new Epic.Subtask("Подзадача 3", "Описание подзадачи 3", Status.NEW, epic2.getTaskId());
+        Subtask subtask3 = new Subtask("Подзадача 3", "Описание подзадачи 3", Status.NEW, epic2.getTaskId());
         manager.addSubtask(subtask3);
 
 
@@ -56,10 +57,9 @@ public class Main {
         System.out.println("task.Epic 2: " + manager.getEpicById(epic2.getTaskId()));
 
 
-       manager.removeEpicById(epic2.getTaskId());
+        manager.removeEpicById(epic2.getTaskId());
 
         System.out.println(manager.getAllTasks());
-
         System.out.println(manager.getAllEpics());
     }
 }
