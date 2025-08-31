@@ -24,7 +24,7 @@ public class TaskManager {
 
     public void removeAllTasks() {
         tasks.clear();
-        System.out.println( "все задачи удалены");
+        System.out.println("все задачи удалены");
     }
 
     public void addTask(Task task) {
@@ -66,7 +66,7 @@ public class TaskManager {
         System.out.println("Задача с ID " + id + " удалена.");
     }
 
-    public List< Epic> getAllEpics() {
+    public List<Epic> getAllEpics() {
         return new ArrayList<>(epics.values());
     }
 
@@ -94,7 +94,7 @@ public class TaskManager {
     public void updateEpicById(int id, Epic updatedEpic) {
         Epic epic = epics.get(id);
         if (epic == null) {
-            System.out.println( "Эпик с ID " + id + " не найден.");
+            System.out.println("Эпик с ID " + id + " не найден.");
         }
         epics.put(id, updatedEpic);
         System.out.println("Эпик с ID " + id + " успешно обновлён.");
@@ -132,7 +132,7 @@ public class TaskManager {
         subtasks.put(id, subtask);
         epic.addSubtask(subtask);
         updateEpicStatus(epicId);
-        System.out.println( "субтаск успешно добавлен");
+        System.out.println("субтаск успешно добавлен");
     }
 
     public Subtask getSubtaskById(int id) {
@@ -143,7 +143,7 @@ public class TaskManager {
         return subtask;
     }
 
-    public void updateSubtaskById(int id,Subtask newSubtask) {
+    public void updateSubtaskById(int id, Subtask newSubtask) {
         Subtask subtask = subtasks.get(id);
         if (subtask == null) {
             System.out.println("Субтаск с ID " + id + " не найден.");
@@ -193,7 +193,6 @@ public class TaskManager {
     }
 
 
-
     public void updateEpicStatus(int id) {
         Epic epic = epics.get(id);
 
@@ -222,9 +221,8 @@ public class TaskManager {
         }
         if (allNew) {
             epic.setStatus(Status.NEW);
-            System.out.println( "Статус эпика - NEW");
-        }
-         else if (allDone) {
+            System.out.println("Статус эпика - NEW");
+        } else if (allDone) {
             epic.setStatus(Status.DONE);
             System.out.println("Статус эпика - DONE");
         } else {
@@ -233,7 +231,7 @@ public class TaskManager {
         }
     }
 
-    public List<Task> getAllSubtasks() {
+    public List<Subtask> getAllSubtasks() {
         return new ArrayList<>(subtasks.values());
     }
 
