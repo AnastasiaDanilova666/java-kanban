@@ -1,7 +1,5 @@
-import manager.HistoryManager;
-import manager.InMemoryTaskManager;
-import manager.Managers;
-import manager.TaskManager;
+package manager;
+
 import task.Task;
 import task.Epic;
 import task.Status;
@@ -12,7 +10,6 @@ public class Main {
         TaskManager manager = Managers.getDefault();
 
         HistoryManager historyManager = manager.getHistoryManager();
-
         Task task1 = new Task("Задача 1", "Описание задачи 1", Status.NEW);
         Task task2 = new Task("Задача 2", "Описание задачи 2", Status.NEW);
         manager.addTask(task1);
