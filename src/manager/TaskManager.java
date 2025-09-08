@@ -59,6 +59,6 @@ public interface TaskManager {
 
     void removeAlLSubtasks();
 
-    HistoryManager getHistoryManager();
+    HistoryManager getHistory();
 
 }

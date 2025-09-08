@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         TaskManager manager = Managers.getDefault();
 
-        HistoryManager historyManager = manager.getHistoryManager();
+        HistoryManager historyManager = manager.getHistory();
         Task task1 = new Task("Задача 1", "Описание задачи 1", Status.NEW);
         Task task2 = new Task("Задача 2", "Описание задачи 2", Status.NEW);
         manager.addTask(task1);
